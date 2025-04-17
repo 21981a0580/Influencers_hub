@@ -9,6 +9,8 @@ import LogiinBus from "./components/LogiinBus";
 import LoginInf from "./components/LoginInf";
 import InfluencerSignup from "./components/InfluencerSignup";
 import BusinessSignup from "./components/BusinessSignup";
+import InfluencerDashBoard from "./components/InfluenecerDashBoard";
+import BusinessPartnerDashboard from "./components/BusinessPartnerDashboard";
 
 
 
@@ -57,6 +59,12 @@ export const AppRouter = createBrowserRouter([
       {
         path: "/signupbusiness",
         element: <BusinessSignup />
+      },{
+        path:"InfluencerDashBoard",
+        element:<InfluencerDashBoard />
+      },{
+        path:"BusinessPartnerDashBoard",
+        element:<BusinessPartnerDashboard />
       }
       
     ],

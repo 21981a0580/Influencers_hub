@@ -10,8 +10,11 @@ const InfluencerSignup = () => {
     youtubeChannel: '',
     instagramFollowers: '',
     youtubeSubscribers: '',
+    minimumBudget: '',
+    contactNumber: '',
   });
 
+  const [successMessage, setSuccessMessage] = useState('');
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -21,14 +24,26 @@ const InfluencerSignup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form Data Submitted:', formData);
-    // TODO: Send formData to backend
-    navigate('/influencer-dashboard');
+
+    // Simulate a successful signup
+    setSuccessMessage('Sign up successful!');
+
+    // Optionally, redirect to the influencer dashboard after 2 seconds
+    setTimeout(() => {
+      navigate('/influencer-dashboard');
+    }, 2000);
   };
 
   return (
     <div className="mt-11 min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-100 to-pink-300">
       <div className="bg-white p-8 rounded-xl shadow-xl w-full max-w-xl">
         <h2 className="text-3xl font-bold text-pink-600 text-center mb-6">Create Influencer Account</h2>
+
+        {successMessage && (
+          <div className="text-green-600 text-center mb-4">
+            {successMessage}
+          </div>
+        )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -116,6 +131,30 @@ const InfluencerSignup = () => {
                 onChange={handleChange}
                 className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-pink-400"
                 placeholder="e.g. 5000"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Minimum Budget to Promote (₹)</label>
+              <input
+                type="number"
+                name="minimumBudget"
+                value={formData.minimumBudget}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-pink-400"
+                placeholder="e.g. 5000"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Contact Number</label>
+              <input
+                type="tel"
+                name="contactNumber"
+                value={formData.contactNumber}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-pink-400"
+                placeholder="e.g. 9876543210"
               />
             </div>
           </div>

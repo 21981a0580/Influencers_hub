@@ -1,89 +1,92 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Updated to useNavigate
+import { useNavigate } from 'react-router-dom';
 
-const LogiinBus = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const navigate = useNavigate(); // Using useNavigate for navigation
+const LoginBus = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  // Dummy credentials for Business Partner Login
+  const dummyCredentials = {
+    email: 'partner@example.com',  // business partner email
+    password: 'partner123',  // business partner password
+  };
+
+  const handleLogin = (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
 
-    // Simulate a delay for animation
-    setTimeout(() => {
-      // After the animation, navigate to the dashboard or home page
-      navigate('/dashboard'); // Change to your desired path
-    }, 1000); // Adjust the time for animation duration
+    // Dummy login validation (replace with real backend auth logic)
+    if (email === dummyCredentials.email && password === dummyCredentials.password) {
+      navigate('/BusinessPartnerDashBoard'); // Redirect to Business Partner Dashboard
+    } else {
+      alert('Invalid credentials! Please try again.');
+    }
   };
 
   return (
     <div
-      className="mt-8 bg-cover bg-center min-h-screen flex items-center justify-center"
+      className="min-h-screen flex items-center justify-center bg-cover bg-center"
       style={{
-        backgroundImage: "url('https://www.smallbusiness.wa.gov.au/sites/default/files/media-library/images/influencer-marketing.jpg')", // Replace with your image URL
+        backgroundImage:
+          "url('https://www.smallbusiness.wa.gov.au/sites/default/files/media-library/images/influencer-marketing.jpg')", // Change background image as necessary
       }}
     >
-      {/* Container */}
-      <div
-        className={`bg-white bg-opacity-80 shadow-lg rounded-lg max-w-md w-full p-8 transition-all duration-700 ${
-          isSubmitting ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
-        }`}
-      >
-        {/* Header */}
-        <div className="text-center mb-6">
-          <h1 className="text-3xl font-semibold text-teal-600">Partner Portal</h1>
-          <p className="text-gray-500 text-lg">Login to access your business partner dashboard</p>
-        </div>
+      <div className="bg-white bg-opacity-90 p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h2 className="text-3xl font-bold text-teal-600 text-center mb-4">Business Partner Login</h2>
+        <p className="text-center text-gray-600 mb-6">Welcome back! Please login to continue.</p>
 
-        {/* Login Form */}
-        <form className="space-y-6" onSubmit={handleSubmit}>
-          {/* Email Input */}
+        <form onSubmit={handleLogin} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Business Email</label>
+            <label className="block text-sm font-medium text-gray-700">Email</label>
             <input
               type="email"
-              placeholder="you@business.com"
-              className="mt-2 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
               required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-teal-500 focus:outline-none"
+              placeholder="you@company.com"
             />
           </div>
 
-          {/* Password Input */}
           <div>
             <label className="block text-sm font-medium text-gray-700">Password</label>
             <input
               type="password"
-              placeholder="********"
-              className="mt-2 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
               required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-teal-500 focus:outline-none"
+              placeholder="********"
             />
           </div>
 
-          {/* Remember Me and Forgot Password */}
-          <div className="flex justify-between items-center">
-            <div className="flex items-center">
-              <input type="checkbox" id="remember" className="h-4 w-4 text-teal-500 border-gray-300 rounded" />
-              <label htmlFor="remember" className="ml-2 text-sm text-gray-600">Remember Me</label>
-            </div>
-            <a href="/forgot-password" className="text-sm text-teal-600 hover:text-teal-700">Forgot Password?</a>
+          <div className="flex justify-between text-sm text-gray-600">
+            <label>
+              <input type="checkbox" className="mr-1" />
+              Remember me
+            </label>
+            <a href="/forgot-password" className="text-teal-600 hover:underline">
+              Forgot password?
+            </a>
           </div>
 
-          {/* Login Button */}
           <button
             type="submit"
-            className="w-full py-3 text-white bg-teal-600 hover:bg-teal-700 rounded-md text-lg font-semibold transition duration-300"
+            className="w-full bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2 rounded-md transition duration-300"
           >
             Login
           </button>
         </form>
 
-        {/* Footer */}
-        <div className="mt-6 text-center text-sm text-gray-500">
-          <p>Don't have an account? <a href="/signupbusiness" className="text-teal-600 hover:text-teal-700">Sign Up</a></p>
-        </div>
+        <p className="mt-6 text-center text-sm text-gray-600">
+          New business partner?{' '}
+          <a href="/signupbusiness" className="text-teal-600 hover:underline">
+            Create account
+          </a>
+        </p>
       </div>
     </div>
   );
 };
 
-export default LogiinBus;
+export default LoginBus;

@@ -11,7 +11,7 @@ const LoginInf = () => {
 
     // Dummy login validation (replace with real backend auth logic)
     if (email === 'influencer@example.com' && password === 'password123') {
-      navigate('/influencer-dashboard'); // redirect to dashboard
+      navigate('/InfluencerDashBoard'); // redirect to dashboard
     } else {
       alert('Invalid credentials! Please try again.');
     }
@@ -22,8 +22,7 @@ const LoginInf = () => {
       className="min-h-screen flex items-center justify-center bg-cover bg-center"
       style={{
         backgroundImage:
-        "url('https://www.smallbusiness.wa.gov.au/sites/default/files/media-library/images/influencer-marketing.jpg')",
-
+          "url('https://www.smallbusiness.wa.gov.au/sites/default/files/media-library/images/influencer-marketing.jpg')",
       }}
     >
       <div className="bg-white bg-opacity-90 p-8 rounded-lg shadow-lg w-full max-w-md">
@@ -73,14 +72,12 @@ const LoginInf = () => {
           </button>
         </form>
 
-                    <p className="mt-6 text-center text-sm text-gray-600">
-            New influencer?{' '}
-            <a href="/signupinf" className="text-pink-600 hover:underline">
-                Create account
-            </a>
-            </p>
-
-
+        <p className="mt-6 text-center text-sm text-gray-600">
+          New influencer?{' '}
+          <a href="/signupinf" className="text-pink-600 hover:underline">
+            Create account
+          </a>
+        </p>
       </div>
     </div>
   );
