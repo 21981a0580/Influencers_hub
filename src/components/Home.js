@@ -1,0 +1,45 @@
+import { Link } from "react-router-dom";
+import AboutUs from "./Aboutus";
+import ContactUs from "./Contactus";
+import Discover from "./Discover";
+
+const Home = () => {
+  return (
+    <div className="w-full">
+      {/* Hero Section */}
+      <section
+        className="h-screen mt-16 bg-cover bg-center bg-no-repeat flex justify-center items-center "
+        style={{
+          backgroundImage:
+            "url('https://www.smallbusiness.wa.gov.au/sites/default/files/media-library/images/influencer-marketing.jpg')",
+        }}
+      >
+        <div className="bg-white bg-opacity-80 backdrop-blur-sm p-8 md:p-12 rounded-lg shadow-lg text-center max-w-xl w-full">
+          <h1 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
+            Welcome to Influencer Hub
+          </h1>
+          <div className="flex flex-col md:flex-row gap-4 justify-center">
+            <Link to="/loginb"><button className="px-5 py-3 border border-cyan-800 rounded hover:bg-cyan-800 hover:text-white transition">
+              Login As a Business Partner
+            </button></Link>
+            <Link to="/loginInf"><button className="px-5 py-3 border border-yellow-800 rounded hover:bg-yellow-800 hover:text-white transition">
+              Login As an Influencer
+            </button></Link>
+          </div>
+        </div>
+      </section>
+      <section className="w-full">
+        <Discover />
+      </section>
+      {/* About Section (starts from next scroll) */}
+      <section className="w-full">
+        <AboutUs />
+      </section>
+      <section className="w-full">
+        <ContactUs />
+      </section>
+    </div>
+  );
+};
+
+export default Home;
