@@ -11,15 +11,21 @@ import InfluencerSignup from "./components/InfluencerSignup";
 import BusinessSignup from "./components/BusinessSignup";
 import InfluencerDashBoard from "./components/InfluenecerDashBoard";
 import BusinessPartnerDashboard from "./components/BusinessPartnerDashboard";
+import ThemeProvider from "./components/ThemeProvider";
 
 
 
 
 const App = () => {
-  return <div >
+  return(
+  <ThemeProvider> 
+      <div >
+
     <Header />  
     <Outlet /> 
   </div>
+  </ThemeProvider>
+  );
   
 }
 
